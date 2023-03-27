@@ -39,7 +39,7 @@ def wait_event():
       running = False
 
 def run():
-  pygame.display.set_caption('Hello World!')
+  pygame.display.set_caption('Find the Aircraft pairs')
   while running:
     draw_game()
     wait_event()
