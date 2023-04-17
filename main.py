@@ -21,7 +21,7 @@ cards = create_cards()
 random.shuffle(cards)
 reversed = []
 
-# 0 ... 5
+# 0 .... 5
 
 def pos_to_index(pos):
     (x, y) = pos
