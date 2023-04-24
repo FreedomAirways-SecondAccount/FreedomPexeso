@@ -3,7 +3,7 @@ from pygame.locals import QUIT
 import random
 
 SIZE = 90
-COLUMNS = 6
+COLUMNS = 3
 
 pygame.init()
 screen = pygame.display.set_mode((900, 800))
@@ -19,9 +19,12 @@ def create_cards():
 
 cards = create_cards() 
 random.shuffle(cards)
-reversed = []
+reversed = [] # [5, 6]
+finished = []
 
-# 0 .... 5
+
+
+# 0 ..... 5/blue theme is best
 
 def pos_to_index(pos):
     (x, y) = pos
@@ -36,10 +39,14 @@ def draw_card(idx):
     column = idx % COLUMNS
     pos = (column * (SIZE+5), row * (SIZE+5))
     screen.blit(cards[idx], pos)
-    #cover
+    #cover-cover
     rect = (pos, (SIZE, SIZE))
     color = (40, 40, 40)
-    if idx not in reversed:
+    if idx in finished:
+      ...
+    elif idx in reversed:
+      ...
+    else:
       pygame.draw.rect(screen, color, rect)
   
 def draw_game():
@@ -63,6 +70,12 @@ def wait_event():
         elif len(reversed) == 1:
             if idx not in reversed:
               reversed.append(idx)
+              #  reversed = [5, 6]
+              print("???")
+              if cards[reversed[0]] is cards[reversed[1]]:
+                finished.append(reversed[0])
+                finished.append(reversed[1])
+                reversed = []
         else:
             reversed = []
   
